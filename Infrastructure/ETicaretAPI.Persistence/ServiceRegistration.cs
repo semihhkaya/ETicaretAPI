@@ -19,14 +19,14 @@ namespace ETicaretAPI.Persistence
         {
             //Kodun içeriisne config ve conn string yazılmaz? //Json,txt, environment gibi nesnelerde tutulur.
             services.AddDbContext<ETicaretAPIDbContext>(options =>
-            options.UseNpgsql(Configuration.ConnectionString),ServiceLifetime.Singleton);
+            options.UseNpgsql(Configuration.ConnectionString));
 
-            services.AddSingleton<ICustomerReadRepository,CustomerReadRepository>();
-            services.AddSingleton<ICustomerWriteRepository, CustomerWriteRepository>();
-            services.AddSingleton<IOrderReadRepository, OrderReadRepository>();
-            services.AddSingleton<IOrderWriteRepository, OrderWriteRepository>();
-            services.AddSingleton<IProductReadRepository, ProductReadRepository>();
-            services.AddSingleton<IProductWriteRepository, ProductWriteRepository>();
+            services.AddScoped<ICustomerReadRepository,CustomerReadRepository>();
+            services.AddScoped<ICustomerWriteRepository, CustomerWriteRepository>();
+            services.AddScoped<IOrderReadRepository, OrderReadRepository>();
+            services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
+            services.AddScoped<IProductReadRepository, ProductReadRepository>();
+            services.AddScoped<IProductWriteRepository, ProductWriteRepository>();
         }
     }
 }
