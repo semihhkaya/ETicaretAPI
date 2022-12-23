@@ -11,10 +11,10 @@ namespace ETicaretAPI.Application.Repositories
     public interface IReadRepository<T> : IRepository<T> where T : BaseEntity //Sadece query odaklı Select sorguları
     {
 
-        IQueryable<T> GetAll();
-        IQueryable<T> GetWhere(Expression<Func<T, bool>> method); //Şartlı kayıtlar
-        Task<T> GetSingleAsync(Expression<Func<T, bool>> method); //Şarta uyan tekil kayıt //Asenktron çalışacaksa isim bu
-        Task<T> GetByIdAsync(string id);
+        IQueryable<T> GetAll(bool tracking = true);
+        IQueryable<T> GetWhere(Expression<Func<T, bool>> method, bool tracking = true); //Şartlı kayıtlar
+        Task<T> GetSingleAsync(Expression<Func<T, bool>> method, bool tracking = true); //Şarta uyan tekil kayıt //Asenktron çalışacaksa isim bu
+        Task<T> GetByIdAsync(string id, bool tracking = true);
 
 
     }
